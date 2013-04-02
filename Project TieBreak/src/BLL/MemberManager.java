@@ -6,6 +6,7 @@ package BLL;
 
 import BE.Member;
 import DAL.MemberDBManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -21,9 +22,9 @@ public class MemberManager
         mdb = new MemberDBManager();
     }
 
-    public Member addMember()
+    public void addMember(Member m) throws SQLException
     {
-        return mdb.addMember();
+        mdb.addMember(m);
     }
     
 }

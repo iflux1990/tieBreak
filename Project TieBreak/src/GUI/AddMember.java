@@ -6,24 +6,40 @@ package GUI;
 
 import BE.Member;
 import BLL.MemberManager;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
  *
  * @author MikeZJ
  */
-
 public class AddMember extends javax.swing.JFrame
 {
 
-     private MemberManager mm = new MemberManager();
+    private MemberManager mm;
+            
+            
+
+
     /**
      * Creates new form AddMember
      */
     public AddMember()
     {
         initComponents();
+        try
+        {
+            mm = new MemberManager();
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -151,22 +167,29 @@ public class AddMember extends javax.swing.JFrame
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
     {//GEN-HEADEREND:event_btnCloseActionPerformed
-       Scanner sc = new Scanner(System.in);
-        
+        Scanner sc = new Scanner(System.in);
+
         String name = txtName.getText();
         String yobStr = txtYoB.getText();
         String address = txtAddress.getText();
         String phoneStr = txtPhone.getText();
         String email = txtEmail.getText();
-        
+
         int yob = Integer.parseInt(yobStr);
         int phone = Integer.parseInt(phoneStr);
-        
+
         Member addMember = new Member(-1, name, address, yob, phone, email, -1);
-        
-        mm.addMember();
-        
-        
+
+        try
+        {
+            mm.addMember(addMember);
+
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCloseActionPerformed
 
@@ -190,12 +213,11 @@ public class AddMember extends javax.swing.JFrame
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-       try {
+        try
+        {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        
+
         }
-            
-        
         catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

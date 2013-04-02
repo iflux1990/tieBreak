@@ -5,10 +5,14 @@
 package DAL;
 
 import BE.Member;
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  *
@@ -16,28 +20,69 @@ import java.sql.SQLException;
  */
 public class MemberDBManager
 {
-
-    public Member addMember()
+    
+    private SQLServerDataSource dataSource;
+    
+     public MemberDBManager() throws Exception
     {
+        Properties props = new Properties();
+        props.load(new FileReader("ConnectionInfo.cfg"));
+
+        dataSource = new SQLServerDataSource();
+
+        dataSource.setServerName(props.getProperty("SERVER"));
+        dataSource.setPortNumber(Integer.parseInt(props.getProperty("PORT")));
+        dataSource.setDatabaseName(props.getProperty("DATABASE"));
+        dataSource.setUser(props.getProperty("USER"));
+        dataSource.setPassword(props.getProperty("PASSWORD"));
+    }
+
+     
+     
+     
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    public void addMember(Member m) throws SQLServerException, SQLException
+    {
+        
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "INSERT INTO member VALUES(?,?,?,?,?)";
+            String sql = "INSERT INTO member VALUES(?,?,?,?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            
             ps.setString(1, m.getName());
+            ps.setString(2, m.getAddress());
+            ps.setInt(3, m.getYearofbirth());
+            ps.setInt(4, m.getPhoneNr());
+            ps.setString(5, m.getEmail());
+            
             
 
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0)
             {
-                throw new SQLException("Unable to update artist.");
+                throw new SQLException("Unable to add member");
             }
 
             ResultSet keys = ps.getGeneratedKeys();
             keys.next();
             int id = keys.getInt(1);
 
-            return new Artist(id, a.getName());
+            
         }
     }
     

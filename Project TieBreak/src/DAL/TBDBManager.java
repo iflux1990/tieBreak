@@ -4,6 +4,7 @@
  */
 package DAL;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.io.FileReader;
 import java.util.Properties;
 
@@ -18,7 +19,7 @@ public class TBDBManager
     public TBDBManager() throws Exception
     {
         Properties props = new Properties();
-        props.load(new FileReader("Connectioninfo.cfg"));
+        props.load(new FileReader("ConnectionInfo.cfg"));
 
         dataSource = new SQLServerDataSource();
 
