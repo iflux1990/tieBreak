@@ -12,6 +12,7 @@ public class Member
 {
     private final int id;
     private String name;
+    private String address;
     private int yearofbirth;
     private int phoneNr;
     private String email;
@@ -25,10 +26,11 @@ public class Member
      * @param email
      * @param licenseNr
      */
-    public Member(int id, String name, int yearofbirth, int phoneNr, String email, int licenseNr)
+    public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr)
     {
         this.id = id;
         this.name = name;
+        this.address = address;
         this.yearofbirth = yearofbirth;
         this.phoneNr = phoneNr;
         this.email = email;
@@ -122,5 +124,21 @@ public class Member
     public void setLicenseNr(int licenseNr)
     {
         this.licenseNr = licenseNr;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress()
+    {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address)
+    {
+        this.address = address;
     }
 }
