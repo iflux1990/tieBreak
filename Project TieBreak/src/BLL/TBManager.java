@@ -10,5 +10,5 @@ package BLL;
  */
 public class TBManager
 {
-    
+     
 }
