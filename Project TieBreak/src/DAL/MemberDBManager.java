@@ -83,7 +83,35 @@ public class MemberDBManager
             int id = keys.getInt(1);
 
             
-        }
+        }   
     }
+     
     
+    public Member showAll() throws SQLServerException, SQLException
+      {
+         try (Connection con = dataSource.getConnection())
+        {
+            String sql = "SELECT * FROM member";
+             PreparedStatement ps = con.prepareStatement(sql);
+
+             ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String address = rs.getString("address");
+                int yearofbirth = rs.getInt("yearofbirth");
+                int phoneNr = rs.getInt("phoneNr");
+                String email = rs.getString("email");
+                int licenseNr = rs.getInt("licenseNr");
+
+                Member m = new Member(id, name, address, yearofbirth, phoneNr, email, licenseNr);
+                return m;
+            }
+            return null;
+           
+      }
+    
+}
 }
