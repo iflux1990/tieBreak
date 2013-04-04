@@ -98,4 +98,19 @@ public class MemberDBManager
         }
 
     }
+     public void removeMember(int id) throws SQLException
+    {
+        Connection con = dataSource.getConnection();
+
+        String sql = "DELETE FROM Member WHERE ID = ? ";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
+
+        int affectedRows = ps.executeUpdate();
+        if (affectedRows == 0)
+        {
+            throw new SQLException("Unable to delete Team");
+        }
+    }
 }

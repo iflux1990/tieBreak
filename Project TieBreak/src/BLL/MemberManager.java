@@ -33,4 +33,8 @@ public class MemberManager
         return mdb.showAll();
     }
     
+    public void removeMember(int id) throws SQLException
+    {
+        mdb.removeMember(id);
+    }
 }
