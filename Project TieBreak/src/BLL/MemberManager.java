@@ -7,6 +7,7 @@ package BLL;
 import BE.Member;
 import DAL.MemberDBManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,6 +26,11 @@ public class MemberManager
     public void addMember(Member m) throws SQLException
     {
         mdb.addMember(m);
+    }
+    
+    public ArrayList<Member> showAll() throws SQLException
+    {
+        return mdb.showAll();
     }
     
 }

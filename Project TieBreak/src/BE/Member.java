@@ -141,4 +141,12 @@ public class Member
     {
         this.address = address;
     }
+
+    @Override
+    public String toString()
+    {
+         return String.format("%-7d %-20s %-35s %-15d %-29s", id, name, address, phoneNr, email);
+    }
+    
+    
 }

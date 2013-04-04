@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import BLL.MemberManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -13,12 +18,25 @@ import javax.swing.UIManager;
 public class TBGUIMenu extends javax.swing.JFrame
 {
 
+    private MemberManager mm;
+
     /**
      * Creates new form TBGUI
      */
     public TBGUIMenu()
     {
         initComponents();
+        try
+        {
+            mm = new MemberManager();
+        }
+        catch (Exception ex)
+        {
+//            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        updateTxtArea();
+
     }
 
     /**
@@ -32,9 +50,10 @@ public class TBGUIMenu extends javax.swing.JFrame
     {
 
         btnCreate = new javax.swing.JButton();
-        txtShowAll = new javax.swing.JTextField();
         lblMemberList = new javax.swing.JLabel();
         btnShowAll = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaShowAll = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +77,11 @@ public class TBGUIMenu extends javax.swing.JFrame
             }
         });
 
+        txtAreaShowAll.setEditable(false);
+        txtAreaShowAll.setColumns(20);
+        txtAreaShowAll.setRows(5);
+        jScrollPane1.setViewportView(txtAreaShowAll);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,13 +89,16 @@ public class TBGUIMenu extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnShowAll)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCreate))
-                    .addComponent(txtShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMemberList))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMemberList)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnShowAll)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCreate)))
+                        .addGap(0, 473, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,12 +106,12 @@ public class TBGUIMenu extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(lblMemberList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnShowAll))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,15 +119,14 @@ public class TBGUIMenu extends javax.swing.JFrame
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCreateActionPerformed
     {//GEN-HEADEREND:event_btnCreateActionPerformed
-     new AddMember().setVisible(true);
+        new AddMember().setVisible(true);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowAllActionPerformed
     {//GEN-HEADEREND:event_btnShowAllActionPerformed
-        
-        
-        
-        
+        updateTxtArea();
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnShowAllActionPerformed
 
@@ -117,7 +143,7 @@ public class TBGUIMenu extends javax.swing.JFrame
         try
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        
+
         }
         catch (ClassNotFoundException ex)
         {
@@ -149,7 +175,26 @@ public class TBGUIMenu extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnShowAll;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMemberList;
-    private javax.swing.JTextField txtShowAll;
+    private javax.swing.JTextArea txtAreaShowAll;
     // End of variables declaration//GEN-END:variables
+
+    private void updateTxtArea()
+    {
+        txtAreaShowAll.setText("");
+        txtAreaShowAll.append(String.format("%-7s %-20s %-35s %-15s %-29s \n", "ID", "Name", "Address", "PhoneNr", "E-mail"));
+        try
+        {
+            for (int i = 0; i < mm.showAll().size(); i++)
+            {
+                txtAreaShowAll.append(mm.showAll().get(i) + "\n");
+
+            }
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Impossible to show members - " + ex.getMessage(), "Error 45", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

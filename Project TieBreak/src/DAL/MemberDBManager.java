@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -20,10 +21,10 @@ import java.util.Properties;
  */
 public class MemberDBManager
 {
-    
+
     private SQLServerDataSource dataSource;
-    
-     public MemberDBManager() throws Exception
+
+    public MemberDBManager() throws Exception
     {
         Properties props = new Properties();
         props.load(new FileReader("ConnectionInfo.cfg"));
@@ -37,40 +38,22 @@ public class MemberDBManager
         dataSource.setPassword(props.getProperty("PASSWORD"));
     }
 
-     
-     
-     
-    
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
     public void addMember(Member m) throws SQLServerException, SQLException
     {
-        
+
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "INSERT INTO member VALUES(?,?,?,?, ?)";
+            String sql = "INSERT INTO member VALUES(?,?,?,?, ?,-1)";
 
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            
+
             ps.setString(1, m.getName());
             ps.setString(2, m.getAddress());
             ps.setInt(3, m.getYearofbirth());
             ps.setInt(4, m.getPhoneNr());
             ps.setString(5, m.getEmail());
-            
-            
+
+
 
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0)
@@ -82,21 +65,22 @@ public class MemberDBManager
             keys.next();
             int id = keys.getInt(1);
 
-            
-        }   
+
+        }
     }
-     
-    
-    public Member showAll() throws SQLServerException, SQLException
-      {
-         try (Connection con = dataSource.getConnection())
+
+    public ArrayList<Member> showAll() throws SQLServerException, SQLException
+    {
+        try (Connection con = dataSource.getConnection())
         {
             String sql = "SELECT * FROM member";
-             PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
 
-             ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
-            if (rs.next())
+            ArrayList<Member> members = new ArrayList<>();
+
+            while (rs.next())
             {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -107,11 +91,11 @@ public class MemberDBManager
                 int licenseNr = rs.getInt("licenseNr");
 
                 Member m = new Member(id, name, address, yearofbirth, phoneNr, email, licenseNr);
-                return m;
+                members.add(m);
             }
-            return null;
-           
-      }
-    
-}
+            return members;
+
+        }
+
+    }
 }
