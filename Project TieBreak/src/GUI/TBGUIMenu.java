@@ -32,6 +32,9 @@ public class TBGUIMenu extends javax.swing.JFrame
     {
 
         btnCreate = new javax.swing.JButton();
+        txtShowAll = new javax.swing.JTextField();
+        lblMemberList = new javax.swing.JLabel();
+        btnShowAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,21 +47,44 @@ public class TBGUIMenu extends javax.swing.JFrame
             }
         });
 
+        lblMemberList.setText("Member List");
+
+        btnShowAll.setText("Show All");
+        btnShowAll.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnShowAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(btnCreate)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnShowAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCreate))
+                    .addComponent(txtShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMemberList))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnCreate)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblMemberList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCreate)
+                    .addComponent(btnShowAll))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
@@ -68,6 +94,15 @@ public class TBGUIMenu extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnCreateActionPerformed
      new AddMember().setVisible(true);
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowAllActionPerformed
+    {//GEN-HEADEREND:event_btnShowAllActionPerformed
+        
+        
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnShowAllActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,5 +148,8 @@ public class TBGUIMenu extends javax.swing.JFrame
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnShowAll;
+    private javax.swing.JLabel lblMemberList;
+    private javax.swing.JTextField txtShowAll;
     // End of variables declaration//GEN-END:variables
 }

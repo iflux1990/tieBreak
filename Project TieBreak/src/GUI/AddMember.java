@@ -77,6 +77,13 @@ public class AddMember extends javax.swing.JFrame
         });
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         lblName.setText("Name:");
 
@@ -189,6 +196,8 @@ public class AddMember extends javax.swing.JFrame
         {
             JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
         }
+        
+        this.dispose();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCloseActionPerformed
@@ -202,6 +211,11 @@ public class AddMember extends javax.swing.JFrame
     {//GEN-HEADEREND:event_txtYoBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtYoBActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelActionPerformed
+    {//GEN-HEADEREND:event_btnCancelActionPerformed
+      this.dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
