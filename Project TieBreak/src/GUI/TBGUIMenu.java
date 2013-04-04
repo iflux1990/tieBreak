@@ -50,14 +50,28 @@ public class TBGUIMenu extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jFrame1 = new javax.swing.JFrame();
         btnCreate = new javax.swing.JButton();
         lblMemberList = new javax.swing.JLabel();
         btnShowAll = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaShowAll = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Main Menu");
 
         btnCreate.setText("Create Member");
         btnCreate.addActionListener(new java.awt.event.ActionListener()
@@ -84,12 +98,21 @@ public class TBGUIMenu extends javax.swing.JFrame
         txtAreaShowAll.setRows(5);
         jScrollPane1.setViewportView(txtAreaShowAll);
 
-        jButton1.setText("Remove Member");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        btnRemove.setText("Remove Member");
+        btnRemove.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                btnRemoveActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setText("Update Contigent");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnUpdateActionPerformed(evt);
             }
         });
 
@@ -109,8 +132,10 @@ public class TBGUIMenu extends javax.swing.JFrame
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCreate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
-                        .addGap(0, 354, Short.MAX_VALUE)))
+                                .addComponent(btnRemove)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdate)))
+                        .addGap(0, 231, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -124,7 +149,8 @@ public class TBGUIMenu extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnShowAll)
-                    .addComponent(jButton1))
+                    .addComponent(btnRemove)
+                    .addComponent(btnUpdate))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -144,10 +170,15 @@ public class TBGUIMenu extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_btnShowAllActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRemoveActionPerformed
+    {//GEN-HEADEREND:event_btnRemoveActionPerformed
        new RemoveMember().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnUpdateActionPerformed
+    {//GEN-HEADEREND:event_btnUpdateActionPerformed
+        new UpdateMember().setVisible(true);
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,8 +224,10 @@ public class TBGUIMenu extends javax.swing.JFrame
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnShowAll;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMemberList;
     private javax.swing.JTextArea txtAreaShowAll;

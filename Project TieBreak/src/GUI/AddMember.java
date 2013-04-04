@@ -22,9 +22,6 @@ public class AddMember extends javax.swing.JFrame
 {
 
     private MemberManager mm;
-            
-            
-
 
     /**
      * Creates new form AddMember
@@ -66,7 +63,8 @@ public class AddMember extends javax.swing.JFrame
         txtPhone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Add Member");
 
         btnClose.setText("Save & Close");
         btnClose.addActionListener(new java.awt.event.ActionListener()
@@ -176,28 +174,41 @@ public class AddMember extends javax.swing.JFrame
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
     {//GEN-HEADEREND:event_btnCloseActionPerformed
 
-        String name = txtName.getText();
-        String yobStr = txtYoB.getText();
-        String address = txtAddress.getText();
-        String phoneStr = txtPhone.getText();
-        String email = txtEmail.getText();
 
-        int yob = Integer.parseInt(yobStr);
-        int phone = Integer.parseInt(phoneStr);
 
-        Member addMember = new Member(-1, name, address, yob, phone, email, -1);
-
-        try
+        if (!"".equals(txtName.getText())
+                && !"".equals(txtYoB.getText())
+                && !"".equals(txtAddress.getText())
+                && !"".equals(txtPhone.getText())
+                && !"".equals(txtEmail.getText()))
         {
-            mm.addMember(addMember);
+            String name = txtName.getText();
+            String yobStr = txtYoB.getText();
+            String address = txtAddress.getText();
+            String phoneStr = txtPhone.getText();
+            String email = txtEmail.getText();
 
-        }
-        catch (Exception e)
-        {
+            int yob = Integer.parseInt(yobStr);
+            int phone = Integer.parseInt(phoneStr);
+
+            Member addMember = new Member(-1, name, address, yob, phone, email, -1);
+
+            try
+            {
+                mm.addMember(addMember);
+
+            }
+            catch (Exception e)
+            {
 //            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+                e.printStackTrace();
+            }
         }
-        
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Empty Fields!!", "Error 404", JOptionPane.ERROR_MESSAGE);
+        }
+
         this.dispose();
 
         // TODO add your handling code here:
@@ -215,7 +226,7 @@ public class AddMember extends javax.swing.JFrame
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelActionPerformed
     {//GEN-HEADEREND:event_btnCancelActionPerformed
-      this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

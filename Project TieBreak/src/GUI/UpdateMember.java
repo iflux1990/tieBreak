@@ -5,26 +5,24 @@
 package GUI;
 
 import BLL.MemberManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author MikeZJ
  */
-public class RemoveMember extends javax.swing.JFrame
+public class UpdateMember extends javax.swing.JFrame
 {
-
+    
     private MemberManager mm;
 
     /**
-     * Creates new form RemoveMember
+     * Creates new form UpdateMember
      */
-    public RemoveMember()
+    public UpdateMember()
     {
         initComponents();
+        
         try
         {
             mm = new MemberManager();
@@ -46,24 +44,17 @@ public class RemoveMember extends javax.swing.JFrame
     private void initComponents()
     {
 
-        btnRemove = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
         lblID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
+        btnCancel = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Remove Member");
+        setTitle("Update Member");
         setAlwaysOnTop(true);
         setResizable(false);
 
-        btnRemove.setText("Remove Member");
-        btnRemove.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnRemoveActionPerformed(evt);
-            }
-        });
+        lblID.setText("ID of member:");
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener()
@@ -74,7 +65,14 @@ public class RemoveMember extends javax.swing.JFrame
             }
         });
 
-        lblID.setText("ID of member:");
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,17 +80,15 @@ public class RemoveMember extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lblID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 74, Short.MAX_VALUE)
-                        .addComponent(btnRemove)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnUpdate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtID)))
-                .addContainerGap())
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +99,9 @@ public class RemoveMember extends javax.swing.JFrame
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRemove)
+                    .addComponent(btnUpdate)
                     .addComponent(btnCancel))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,21 +112,20 @@ public class RemoveMember extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRemoveActionPerformed
-    {//GEN-HEADEREND:event_btnRemoveActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnUpdateActionPerformed
+    {//GEN-HEADEREND:event_btnUpdateActionPerformed
         if (!"".equals(txtID.getText()))
         {
             String IDstr = txtID.getText();
 
-
             int ID = Integer.parseInt(IDstr);
             try
             {
-                mm.removeMember(ID);
+                mm.updateMember(ID);
             }
             catch (Exception e)
             {
-                JOptionPane.showMessageDialog(this, "Could not remove the member - " + e.getMessage(), "Error 38", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Could not update the member - " + e.getMessage(), "Error 38", JOptionPane.ERROR_MESSAGE);
             }
         }
         else
@@ -138,13 +133,8 @@ public class RemoveMember extends javax.swing.JFrame
             JOptionPane.showMessageDialog(this, "Remember ID!" , "Error 404 NO ID FOUND", JOptionPane.ERROR_MESSAGE);
         }
 
-
-
-
-
-
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRemoveActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,19 +159,19 @@ public class RemoveMember extends javax.swing.JFrame
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(RemoveMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(RemoveMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(RemoveMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(RemoveMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -190,13 +180,13 @@ public class RemoveMember extends javax.swing.JFrame
         {
             public void run()
             {
-                new RemoveMember().setVisible(true);
+                new UpdateMember().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnRemove;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel lblID;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables

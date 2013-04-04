@@ -132,4 +132,22 @@ public class MemberDBManager
             }
         }
     }
+
+    public void updateMember(int ID) throws SQLException
+    {
+          {
+            Connection con = dataSource.getConnection();
+
+            String sql = "UPDATE Member SET isPaid = 1 WHERE ID = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+             ps.setInt(1, ID);
+
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0)
+            {
+                throw new SQLException("Unable to update isPaid");
+            }
+        }
+    }
 }

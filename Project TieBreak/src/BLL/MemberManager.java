@@ -48,4 +48,9 @@ public class MemberManager
             mdb.newSeason();
         }
     }
+
+    public void updateMember(int ID) throws SQLException
+    {
+       mdb.updateMember(ID);
+    }
 }
