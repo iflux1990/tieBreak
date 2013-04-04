@@ -5,6 +5,10 @@
 package GUI;
 
 import BLL.MemberManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -115,8 +119,14 @@ public class RemoveMember extends javax.swing.JFrame
       String IDstr = txtID.getText();
       
       int ID = Integer.parseInt(IDstr);
-      
-      mm.removeMember(ID);
+        try
+        {
+            mm.removeMember(ID);
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Could not remove the member - "+ e.getMessage(), "Error 38", JOptionPane.ERROR_MESSAGE);
+        }
         
         
         
