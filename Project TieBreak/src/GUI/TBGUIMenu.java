@@ -54,6 +54,7 @@ public class TBGUIMenu extends javax.swing.JFrame
         btnShowAll = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaShowAll = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +83,15 @@ public class TBGUIMenu extends javax.swing.JFrame
         txtAreaShowAll.setRows(5);
         jScrollPane1.setViewportView(txtAreaShowAll);
 
+        jButton1.setText("Remove Member");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,8 +106,10 @@ public class TBGUIMenu extends javax.swing.JFrame
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnShowAll)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCreate)))
-                        .addGap(0, 473, Short.MAX_VALUE)))
+                                .addComponent(btnCreate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))
+                        .addGap(0, 354, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,7 +122,8 @@ public class TBGUIMenu extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
-                    .addComponent(btnShowAll))
+                    .addComponent(btnShowAll)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,6 +142,11 @@ public class TBGUIMenu extends javax.swing.JFrame
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnShowAllActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+       new RemoveMember().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +193,7 @@ public class TBGUIMenu extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnShowAll;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMemberList;
     private javax.swing.JTextArea txtAreaShowAll;
