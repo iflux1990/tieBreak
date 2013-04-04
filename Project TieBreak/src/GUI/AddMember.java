@@ -175,7 +175,6 @@ public class AddMember extends javax.swing.JFrame
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
     {//GEN-HEADEREND:event_btnCloseActionPerformed
-        Scanner sc = new Scanner(System.in);
 
         String name = txtName.getText();
         String yobStr = txtYoB.getText();
