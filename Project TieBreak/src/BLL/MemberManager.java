@@ -8,6 +8,9 @@ import BE.Member;
 import DAL.MemberDBManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import sun.util.calendar.Gregorian;
 
 /**
  *
@@ -36,5 +39,13 @@ public class MemberManager
     public void removeMember(int id) throws SQLException
     {
         mdb.removeMember(id);
+    }
+    
+    public void setNewSeason() throws SQLException
+    {
+        if((Calendar.MONTH)+1 == 4 || (Calendar.MONTH)+1 == 10 )
+        {
+            mdb.newSeason();
+        }
     }
 }

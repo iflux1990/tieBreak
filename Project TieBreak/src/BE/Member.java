@@ -17,6 +17,7 @@ public class Member
     private int phoneNr;
     private String email;
     private int licenseNr;
+    private boolean isPaid;
     /**
      *
      * @param id
@@ -26,7 +27,7 @@ public class Member
      * @param email
      * @param licenseNr
      */
-    public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr)
+    public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr, boolean isPaid)
     {
         this.id = id;
         this.name = name;
@@ -35,7 +36,19 @@ public class Member
         this.phoneNr = phoneNr;
         this.email = email;
         this.licenseNr = licenseNr;
+        this.isPaid = isPaid;
         
+    }
+
+    public Member(int id, String name, String address, int yob, int phone, String email, int licenseNr)
+    {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.yearofbirth = yearofbirth;
+        this.phoneNr = phoneNr;
+        this.email = email;
+        this.licenseNr = licenseNr;
     }
 
     /**
@@ -145,8 +158,23 @@ public class Member
     @Override
     public String toString()
     {
-         return String.format("%-7d %-20s %-35s %-15d %-29s", id, name, address, phoneNr, email);
+         return String.format("%-7d %-20s %-35s %-15d %-29s %-4s", id, name, address, phoneNr, email, isPaid);
     }
-    
+
+    /**
+     * @return the isPaid
+     */
+    public boolean isIsPaid()
+    {
+        return isPaid;
+    }
+
+    /**
+     * @param isPaid the isPaid to set
+     */
+    public void setIsPaid(boolean isPaid)
+    {
+        this.isPaid = isPaid;
+    }   
     
 }

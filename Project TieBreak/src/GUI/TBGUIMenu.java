@@ -29,6 +29,7 @@ public class TBGUIMenu extends javax.swing.JFrame
         try
         {
             mm = new MemberManager();
+            mm.setNewSeason();
         }
         catch (Exception ex)
         {
@@ -202,7 +203,7 @@ public class TBGUIMenu extends javax.swing.JFrame
     private void updateTxtArea()
     {
         txtAreaShowAll.setText("");
-        txtAreaShowAll.append(String.format("%-7s %-20s %-35s %-15s %-29s \n", "ID", "Name", "Address", "PhoneNr", "E-mail"));
+        txtAreaShowAll.append(String.format("%-7s %-20s %-35s %-15s %-29s %-5s \n", "ID", "Name", "Address", "PhoneNr", "E-mail", "Kotigent paid?"));
         try
         {
             for (int i = 0; i < mm.showAll().size(); i++)

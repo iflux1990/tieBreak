@@ -43,7 +43,7 @@ public class MemberDBManager
 
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "INSERT INTO member VALUES(?,?,?,?, ?,-1)";
+            String sql = "INSERT INTO member VALUES(?,?,?,?, ?,-1,0)";
 
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -89,8 +89,9 @@ public class MemberDBManager
                 int phoneNr = rs.getInt("phoneNr");
                 String email = rs.getString("email");
                 int licenseNr = rs.getInt("licenseNr");
+                boolean isPaid = rs.getBoolean("isPaid");
 
-                Member m = new Member(id, name, address, yearofbirth, phoneNr, email, licenseNr);
+                Member m = new Member(id, name, address, yearofbirth, phoneNr, email, licenseNr, isPaid);
                 members.add(m);
             }
             return members;
@@ -98,7 +99,8 @@ public class MemberDBManager
         }
 
     }
-     public void removeMember(int id) throws SQLException
+
+    public void removeMember(int id) throws SQLException
     {
         Connection con = dataSource.getConnection();
 
@@ -110,7 +112,24 @@ public class MemberDBManager
         int affectedRows = ps.executeUpdate();
         if (affectedRows == 0)
         {
-            throw new SQLException("Unable to delete Team");
+            throw new SQLException("Unable to delete Member");
+        }
+    }
+
+    public void newSeason() throws SQLException
+    {
+        {
+            Connection con = dataSource.getConnection();
+
+            String sql = "UPDATE Member SET isPaid = 0";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0)
+            {
+                throw new SQLException("Unable to update isPaid");
+            }
         }
     }
 }
