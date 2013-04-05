@@ -132,7 +132,7 @@ public class UpdateMember extends javax.swing.JFrame
         {
             JOptionPane.showMessageDialog(this, "Remember ID!" , "Error 404 NO ID FOUND", JOptionPane.ERROR_MESSAGE);
         }
-
+ this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed
 
