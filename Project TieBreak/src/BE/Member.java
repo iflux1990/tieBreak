@@ -40,7 +40,7 @@ public class Member
         
     }
 
-    public Member(int id, String name, String address, int yob, int phone, String email, int licenseNr)
+    public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr)
     {
         this.id = id;
         this.name = name;
