@@ -19,6 +19,7 @@ public class TBGUIMenu extends javax.swing.JFrame
 {
 
     private MemberManager mm;
+    private MemberTableModel memberModel;
 
     /**
      * Creates new form TBGUI
@@ -30,13 +31,15 @@ public class TBGUIMenu extends javax.swing.JFrame
         {
             mm = new MemberManager();
             mm.setNewSeason();
+            memberModel = new MemberTableModel(mm.showAll());
+            tblShowAll.setModel(memberModel);
         }
         catch (Exception ex)
         {
 //            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        updateTxtArea();
+//        updateTxtArea();
 
     }
 
@@ -54,11 +57,11 @@ public class TBGUIMenu extends javax.swing.JFrame
         btnCreate = new javax.swing.JButton();
         lblMemberList = new javax.swing.JLabel();
         btnShowAll = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaShowAll = new javax.swing.JTextArea();
         btnRemove = new javax.swing.JButton();
         btnUpdateCon = new javax.swing.JButton();
         btnUpdateMem = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblShowAll = new javax.swing.JTable();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -94,11 +97,6 @@ public class TBGUIMenu extends javax.swing.JFrame
             }
         });
 
-        txtAreaShowAll.setEditable(false);
-        txtAreaShowAll.setColumns(20);
-        txtAreaShowAll.setRows(5);
-        jScrollPane1.setViewportView(txtAreaShowAll);
-
         btnRemove.setText("Remove Member");
         btnRemove.addActionListener(new java.awt.event.ActionListener()
         {
@@ -126,6 +124,18 @@ public class TBGUIMenu extends javax.swing.JFrame
             }
         });
 
+        tblShowAll.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+
+            },
+            new String []
+            {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tblShowAll);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,23 +143,19 @@ public class TBGUIMenu extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                    .addComponent(lblMemberList)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMemberList)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(btnShowAll)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCreate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdateCon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdateMem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRemove)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnShowAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCreate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdateCon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdateMem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemove)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,8 +163,8 @@ public class TBGUIMenu extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(lblMemberList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRemove)
                     .addComponent(btnUpdateCon)
@@ -178,7 +184,7 @@ public class TBGUIMenu extends javax.swing.JFrame
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowAllActionPerformed
     {//GEN-HEADEREND:event_btnShowAllActionPerformed
-        updateTxtArea();
+//        updateTxtArea();
 
 
         // TODO add your handling code here:
@@ -248,26 +254,26 @@ public class TBGUIMenu extends javax.swing.JFrame
     private javax.swing.JButton btnUpdateCon;
     private javax.swing.JButton btnUpdateMem;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblMemberList;
-    private javax.swing.JTextArea txtAreaShowAll;
+    private javax.swing.JTable tblShowAll;
     // End of variables declaration//GEN-END:variables
 
-    private void updateTxtArea()
-    {
-        txtAreaShowAll.setText("");
-        txtAreaShowAll.append(String.format("%-7s %-20s %-35s %-15s %-29s %-5s \n", "ID", "Name", "Address", "PhoneNr", "E-mail", "Kotigent paid?"));
-        try
-        {
-            for (int i = 0; i < mm.showAll().size(); i++)
-            {
-                txtAreaShowAll.append(mm.showAll().get(i) + "\n");
-
-            }
-        }
-        catch (SQLException ex)
-        {
-            JOptionPane.showMessageDialog(this, "Impossible to show members - " + ex.getMessage(), "Error 45", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+//    private void updateTxtArea()
+//    {
+//        txtAreaShowAll.setText("");
+//        txtAreaShowAll.append(String.format("%-7s %-20s %-35s %-15s %-29s %-5s \n", "ID", "Name", "Address", "PhoneNr", "E-mail", "Kotigent paid?"));
+//        try
+//        {
+//            for (int i = 0; i < mm.showAll().size(); i++)
+//            {
+//                txtAreaShowAll.append(mm.showAll().get(i) + "\n");
+//
+//            }
+//        }
+//        catch (SQLException ex)
+//        {
+//            JOptionPane.showMessageDialog(this, "Impossible to show members - " + ex.getMessage(), "Error 45", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
 }
