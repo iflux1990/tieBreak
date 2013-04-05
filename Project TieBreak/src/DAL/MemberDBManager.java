@@ -133,7 +133,7 @@ public class MemberDBManager
         }
     }
 
-    public void updateMember(int ID) throws SQLException
+    public void updateContigent(int ID) throws SQLException
     {
           {
             Connection con = dataSource.getConnection();
@@ -150,4 +150,51 @@ public class MemberDBManager
             }
         }
     }
+    
+     public void updateMember(Member update, int id) throws SQLException
+    {
+          {
+            Connection con = dataSource.getConnection();
+
+            String sql = "UPDATE Member SET name = ?, address = ?, phoneNr = ?, email = ?"
+                    + " WHERE ID = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+             ps.setString(1, update.getName());
+             ps.setString(2, update.getAddress());
+             ps.setInt(3, update.getPhoneNr());
+             ps.setString(4, update.getEmail());
+             ps.setInt(5, update.getId());
+
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0)
+            {
+                throw new SQLException("Unable to update isPaid");
+            }
+        }
+    }
+     
+     public Member getByID(int ID)throws SQLException
+        {
+            Connection con = dataSource.getConnection();
+            String sql = "SELECT * FROM member WHERE Id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, ID);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String address = rs.getString("address");
+                int phoneNr = rs.getInt("phoneNr");
+                String email = rs.getString("email");
+               
+
+                Member m = new Member(id, name, address, phoneNr, email);
+                return m;
+            }
+            return null;
+        }
 }

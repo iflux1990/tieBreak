@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import BE.Member;
 import BLL.MemberManager;
 import javax.swing.JOptionPane;
 
@@ -13,7 +14,6 @@ import javax.swing.JOptionPane;
  */
 public class UpdateMember extends javax.swing.JFrame
 {
-    
     private MemberManager mm;
 
     /**
@@ -22,8 +22,7 @@ public class UpdateMember extends javax.swing.JFrame
     public UpdateMember()
     {
         initComponents();
-        
-        try
+     try
         {
             mm = new MemberManager();
         }
@@ -44,17 +43,32 @@ public class UpdateMember extends javax.swing.JFrame
     private void initComponents()
     {
 
-        lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+        btnClose = new javax.swing.JButton();
+        txtPhone = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        lblPhone = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Member");
-        setAlwaysOnTop(true);
-        setResizable(false);
 
-        lblID.setText("ID of member:");
+        lblEmail.setText("Email:");
+
+        btnClose.setText("Save & Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener()
@@ -65,76 +79,142 @@ public class UpdateMember extends javax.swing.JFrame
             }
         });
 
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener()
+        txtEmail.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                btnUpdateActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
+
+        lblPhone.setText("Phone Number:");
+
+        lblAddress.setText("Address:");
+
+        lblName.setText("Name:");
+
+        jLabel1.setText("ID to update:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblID)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnUpdate)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 214, Short.MAX_VALUE)
+                        .addComponent(btnClose)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancel))
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhone)
+                            .addComponent(lblAddress)
+                            .addComponent(lblName)
+                            .addComponent(lblEmail)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail)
+                            .addComponent(txtName)
+                            .addComponent(txtAddress)
+                            .addComponent(txtPhone)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
+                    .addComponent(jLabel1)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
+                    .addComponent(lblName)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddress)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhone)
+                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClose)
                     .addComponent(btnCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
+    {//GEN-HEADEREND:event_btnCloseActionPerformed
+
+//        if (!"".equals(txtName.getText())
+//            && !"".equals(txtAddress.getText())
+//            && !"".equals(txtPhone.getText())
+//            && !"".equals(txtEmail.getText()))
+        {
+            String idStr = txtID.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String phoneStr = txtPhone.getText();
+            String email = txtEmail.getText();
+
+            int id = Integer.parseInt(idStr);
+            int phone = Integer.parseInt(phoneStr);
+
+            Member updateMember = new Member(id, name, address, phone, email);
+
+            try
+            {
+                mm.updateMember(updateMember, id);
+                
+                if("".equals(txtName.getText())
+            || "".equals(txtAddress.getText())
+            || "".equals(txtPhone.getText())
+            || "".equals(txtEmail.getText()))
+                {
+                    
+                }
+
+            }
+            catch (Exception e)
+            {
+                //            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        }
+//        else
+//        {
+//            JOptionPane.showMessageDialog(this, "Empty Fields!!", "Error 404", JOptionPane.ERROR_MESSAGE);
+//        }
+
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelActionPerformed
     {//GEN-HEADEREND:event_btnCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnUpdateActionPerformed
-    {//GEN-HEADEREND:event_btnUpdateActionPerformed
-        if (!"".equals(txtID.getText()))
-        {
-            String IDstr = txtID.getText();
-
-            int ID = Integer.parseInt(IDstr);
-            try
-            {
-                mm.updateMember(ID);
-            }
-            catch (Exception e)
-            {
-                JOptionPane.showMessageDialog(this, "Could not update the member - " + e.getMessage(), "Error 38", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(this, "Remember ID!" , "Error 404 NO ID FOUND", JOptionPane.ERROR_MESSAGE);
-        }
- this.dispose();
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtEmailActionPerformed
+    {//GEN-HEADEREND:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,8 +266,16 @@ public class UpdateMember extends javax.swing.JFrame
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JLabel lblID;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 }

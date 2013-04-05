@@ -50,6 +50,15 @@ public class Member
         this.email = email;
         this.licenseNr = licenseNr;
     }
+    
+    public Member(int id, String name, String address, int phoneNr, String email)
+    {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phoneNr = phoneNr;
+        this.email = email;
+    }
 
     /**
      * @return the id

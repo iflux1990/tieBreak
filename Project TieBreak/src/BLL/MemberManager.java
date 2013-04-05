@@ -49,8 +49,13 @@ public class MemberManager
         }
     }
 
-    public void updateMember(int ID) throws SQLException
+    public void updateContigent(int ID) throws SQLException
     {
-       mdb.updateMember(ID);
+       mdb.updateContigent(ID);
+    }
+
+    public void updateMember(Member update, int ID)throws SQLException
+    {
+        mdb.updateMember(update, ID);
     }
 }
