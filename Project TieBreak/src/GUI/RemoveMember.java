@@ -139,7 +139,7 @@ public class RemoveMember extends javax.swing.JFrame
         }
 
 
-
+        this.dispose();
 
 
 

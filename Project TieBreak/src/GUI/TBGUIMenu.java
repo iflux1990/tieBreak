@@ -27,6 +27,7 @@ public class TBGUIMenu extends javax.swing.JFrame
     public TBGUIMenu()
     {
         initComponents();
+
         try
         {
             mm = new MemberManager();
@@ -184,10 +185,7 @@ public class TBGUIMenu extends javax.swing.JFrame
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowAllActionPerformed
     {//GEN-HEADEREND:event_btnShowAllActionPerformed
-//        updateTxtArea();
-
-
-        // TODO add your handling code here:
+            tblShowAll.setModel(memberModel);
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRemoveActionPerformed
