@@ -34,10 +34,12 @@ public class MemberTableModel extends AbstractTableModel
     {
         try
         {
+            fireTableDataChanged();
             mm = new MemberManager();
         }
         catch (Exception ex)
         {
+            System.out.println("lol");
         }
     }
 
@@ -98,5 +100,10 @@ public class MemberTableModel extends AbstractTableModel
     public boolean isCellEditable(int row, int col)
     {
         return (false);
+    }
+
+    public void updateTable(ArrayList<Member> members)
+    {
+        fireTableDataChanged();
     }
 }
