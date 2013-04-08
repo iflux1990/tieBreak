@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class UpdateMember extends javax.swing.JFrame
 {
+
     private MemberManager mm;
 
     /**
@@ -22,7 +23,7 @@ public class UpdateMember extends javax.swing.JFrame
     public UpdateMember()
     {
         initComponents();
-     try
+        try
         {
             mm = new MemberManager();
         }
@@ -160,57 +161,71 @@ public class UpdateMember extends javax.swing.JFrame
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCloseActionPerformed
     {//GEN-HEADEREND:event_btnCloseActionPerformed
-
 //        if (!"".equals(txtName.getText())
 //            && !"".equals(txtAddress.getText())
 //            && !"".equals(txtPhone.getText())
 //            && !"".equals(txtEmail.getText()))
         {
-            String idStr = txtID.getText();
-            String name = txtName.getText();
-            String address = txtAddress.getText();
-            String phoneStr = txtPhone.getText();
-            String email = txtEmail.getText();
-
-            int id = Integer.parseInt(idStr);
-            int phone = Integer.parseInt(phoneStr);
-
-            Member updateMember = new Member(id, name, address, phone, email);
-
             try
-            {
-                mm.updateMember(updateMember, id);
+            {   
+                String idStr = txtID.getText();
+                int id = Integer.parseInt(idStr);
                 
-                if("".equals(txtName.getText())
-            || "".equals(txtAddress.getText())
-            || "".equals(txtPhone.getText())
-            || "".equals(txtEmail.getText()))
+                Member m = mm.getByID(id);
+                
+                String name = m.getName();    
+                String address = m.getAddress();
+                int phone = m.getPhoneNr();
+                String email = m.getEmail();
+                
+                
+                if (!"".equals(txtName.getText()) || null == (txtName.getText()))
                 {
+                    name = txtName.getText();
                     
                 }
-
+                if (!"".equals(txtAddress.getText()) || null == (txtAddress.getText()))
+                {
+                    address = txtAddress.getText();
+                    
+                }
+                if (!"".equals(txtPhone.getText()) || null == (txtPhone.getText()))
+                {
+                    String phoneStr = txtPhone.getText();
+                    if(!"".equals(txtPhone.getText()))
+                    {
+                    phone = Integer.parseInt(phoneStr);
+                    }    
+                }
+                if (!"".equals(txtEmail.getText()) || null == (txtEmail.getText()))
+                {                  
+                    email = txtEmail.getText();
+                    
+                }
+                
+                Member updateMember = new Member(id, name, address, phone, email);
+                mm.updateMember(updateMember, id);
             }
             catch (Exception e)
             {
                 //            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
+                
             }
+            
         }
-//        else
-//        {
-//            JOptionPane.showMessageDialog(this, "Empty Fields!!", "Error 404", JOptionPane.ERROR_MESSAGE);
-//        }
+
 
         this.dispose();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCloseActionPerformed
-
+    
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelActionPerformed
     {//GEN-HEADEREND:event_btnCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
-
+    
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtEmailActionPerformed
     {//GEN-HEADEREND:event_txtEmailActionPerformed
         // TODO add your handling code here:

@@ -9,8 +9,6 @@ import DAL.MemberDBManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import sun.util.calendar.Gregorian;
 
 /**
  *
@@ -57,5 +55,10 @@ public class MemberManager
     public void updateMember(Member update, int ID)throws SQLException
     {
         mdb.updateMember(update, ID);
+    }
+    
+    public Member getByID(int ID) throws SQLException
+    {
+        return mdb.getByID(ID);
     }
 }
