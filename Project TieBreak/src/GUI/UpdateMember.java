@@ -16,6 +16,7 @@ public class UpdateMember extends javax.swing.JFrame
 {
 
     private MemberManager mm;
+    private MemberTableModel memberModel;
 
     /**
      * Creates new form UpdateMember
@@ -215,7 +216,7 @@ public class UpdateMember extends javax.swing.JFrame
             
         }
 
-
+        
         this.dispose();
 
         // TODO add your handling code here:

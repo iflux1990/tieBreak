@@ -6,10 +6,8 @@ package GUI;
 
 import BE.Member;
 import BLL.MemberManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -34,7 +32,6 @@ public class MemberTableModel extends AbstractTableModel
     {
         try
         {
-            fireTableDataChanged();
             mm = new MemberManager();
         }
         catch (Exception ex)
@@ -42,9 +39,9 @@ public class MemberTableModel extends AbstractTableModel
             System.out.println("lol");
         }
     }
-
     MemberTableModel(ArrayList<Member> AllPersons)
     {
+        fireTableDataChanged();
         members = AllPersons;
     }
 
@@ -101,9 +98,11 @@ public class MemberTableModel extends AbstractTableModel
     {
         return (false);
     }
-
-    public void updateTable(ArrayList<Member> members)
+    
+    public void setCollection(Collection<Member> list)
     {
+        members = new ArrayList<>(list);
         fireTableDataChanged();
+        System.out.println("jubii");
     }
 }
