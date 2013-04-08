@@ -27,6 +27,8 @@ public class Member
      * @param email
      * @param licenseNr
      */
+    
+    
     public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr, boolean isPaid)
     {
         this.id = id;

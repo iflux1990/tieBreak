@@ -208,6 +208,7 @@ public class UpdateMember extends javax.swing.JFrame
                 Member updateMember = new Member(id, name, address, phone, email);
                 mm.updateMember(updateMember, id);
                 memberModel.setCollection(mm.showAll());
+               
             }
             catch (Exception e)
             {
