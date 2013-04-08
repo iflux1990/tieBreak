@@ -103,6 +103,5 @@ public class MemberTableModel extends AbstractTableModel
     {
         members = new ArrayList<>(list);
         fireTableDataChanged();
-        System.out.println("jubii");
     }
 }

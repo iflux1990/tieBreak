@@ -6,6 +6,9 @@ package GUI;
 
 import BLL.MemberManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -31,7 +34,7 @@ public class TBGUIMenu extends javax.swing.JFrame
             mm.setNewSeason();
             memberModel = new MemberTableModel(mm.showAll());
             tblShowAll.setModel(memberModel);
-            memberModel = new MemberTableModel();
+            
         }
         catch (Exception ex)
         {
@@ -262,21 +265,5 @@ public class TBGUIMenu extends javax.swing.JFrame
     private javax.swing.JTable tblShowAll;
     // End of variables declaration//GEN-END:variables
 
-//    private void updateTxtArea()
-//    {
-//        txtAreaShowAll.setText("");
-//        txtAreaShowAll.append(String.format("%-7s %-20s %-35s %-15s %-29s %-5s \n", "ID", "Name", "Address", "PhoneNr", "E-mail", "Kotigent paid?"));
-//        try
-//        {
-//            for (int i = 0; i < mm.showAll().size(); i++)
-//            {
-//                txtAreaShowAll.append(mm.showAll().get(i) + "\n");
-//
-//            }
-//        }
-//        catch (SQLException ex)
-//        {
-//            JOptionPane.showMessageDialog(this, "Impossible to show members - " + ex.getMessage(), "Error 45", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
+
 }
