@@ -6,9 +6,6 @@ package GUI;
 
 import BLL.MemberManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -186,14 +183,16 @@ public class TBGUIMenu extends javax.swing.JFrame
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowAllActionPerformed
     {//GEN-HEADEREND:event_btnShowAllActionPerformed
-        try
-        {
-            memberModel.setCollection(mm.showAll());
-        }
-        catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        }
+        
+        
+        //        try
+//        {
+//            memberModel.setCollection(mm.showAll());
+//        }
+//        catch (SQLException ex)
+//        {
+//            ex.printStackTrace();
+//        }
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRemoveActionPerformed
