@@ -35,19 +35,22 @@ public class CourtResevation extends javax.swing.JFrame
         chkCourt1 = new javax.swing.JCheckBox();
         chkCourt2 = new javax.swing.JCheckBox();
         chkCourt3 = new javax.swing.JCheckBox();
-        lblChoose = new javax.swing.JLabel();
-        txtChoose = new javax.swing.JTextField();
         lblAvailable = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         rbtn0709 = new javax.swing.JRadioButton();
         rbtn0911 = new javax.swing.JRadioButton();
         rbtn1113 = new javax.swing.JRadioButton();
         rbtn1517 = new javax.swing.JRadioButton();
         rbtn1719 = new javax.swing.JRadioButton();
         rbtn1315 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton10 = new javax.swing.JRadioButton();
+        rbtn2122 = new javax.swing.JRadioButton();
+        rbtn1921 = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblDate = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,16 +62,17 @@ public class CourtResevation extends javax.swing.JFrame
 
         chkCourt3.setText("Court 3");
 
-        lblChoose.setText("Choose available court:");
-
         lblAvailable.setText("Available courts:");
 
-        lblDate.setText("Desired date:");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Booking"));
 
+        buttonGroup1.add(rbtn0709);
         rbtn0709.setText("07:00-09:00");
 
+        buttonGroup1.add(rbtn0911);
         rbtn0911.setText("09:00-11:00");
 
+        buttonGroup1.add(rbtn1113);
         rbtn1113.setText("11:00-13:00");
         rbtn1113.addActionListener(new java.awt.event.ActionListener()
         {
@@ -78,10 +82,13 @@ public class CourtResevation extends javax.swing.JFrame
             }
         });
 
+        buttonGroup1.add(rbtn1517);
         rbtn1517.setText("15:00-17:00");
 
+        buttonGroup1.add(rbtn1719);
         rbtn1719.setText("17:00-19:00");
 
+        buttonGroup1.add(rbtn1315);
         rbtn1315.setText("13:00-15:00");
         rbtn1315.addActionListener(new java.awt.event.ActionListener()
         {
@@ -91,9 +98,85 @@ public class CourtResevation extends javax.swing.JFrame
             }
         });
 
-        jRadioButton8.setText("21:00-22:00");
+        buttonGroup1.add(rbtn2122);
+        rbtn2122.setText("21:00-22:00");
 
-        jRadioButton10.setText("19:00-21:00");
+        buttonGroup1.add(rbtn1921);
+        rbtn1921.setText("19:00-21:00");
+
+        lblDate.setText("Desired date:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblDate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rbtn1315)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtn2122))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rbtn1113)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtn1921))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rbtn0911)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbtn1719))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(rbtn0709)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtn1517)))
+                        .addGap(0, 41, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtn0709)
+                    .addComponent(rbtn1517))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtn0911)
+                    .addComponent(rbtn1719))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtn1113)
+                    .addComponent(rbtn1921))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtn1315)
+                    .addComponent(rbtn2122))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton1.setText("Ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Cancel");
+
+        jPasswordField1.setText("jPasswordField1");
+
+        jLabel1.setText("Password: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,40 +184,32 @@ public class CourtResevation extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblChoose)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtChoose))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblID)
-                            .addComponent(lblDate))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkCourt3)
+                                    .addComponent(chkCourt2)
+                                    .addComponent(chkCourt1)))
+                            .addComponent(lblAvailable)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblID)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPasswordField1)
+                                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(chkCourt3)
-                            .addComponent(chkCourt2)
-                            .addComponent(chkCourt1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbtn1315)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbtn1113)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton10))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbtn0911)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rbtn1719))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbtn0709)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtn1517))
-                            .addComponent(txtID)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(lblAvailable))
-                .addContainerGap(153, Short.MAX_VALUE))
+                        .addComponent(jButton2)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,28 +219,12 @@ public class CourtResevation extends javax.swing.JFrame
                     .addComponent(lblID)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDate)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbtn0709)
-                            .addComponent(rbtn1517))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtn0911)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbtn1113)
-                            .addComponent(jRadioButton10)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(rbtn1719)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtn1315)
-                    .addComponent(jRadioButton8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblAvailable)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkCourt1)
@@ -173,11 +232,11 @@ public class CourtResevation extends javax.swing.JFrame
                 .addComponent(chkCourt2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkCourt3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChoose)
-                    .addComponent(txtChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         pack();
@@ -192,6 +251,11 @@ public class CourtResevation extends javax.swing.JFrame
     {//GEN-HEADEREND:event_rbtn1113ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtn1113ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,11 +310,13 @@ public class CourtResevation extends javax.swing.JFrame
     private javax.swing.JCheckBox chkCourt1;
     private javax.swing.JCheckBox chkCourt2;
     private javax.swing.JCheckBox chkCourt3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblAvailable;
-    private javax.swing.JLabel lblChoose;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblID;
     private javax.swing.JRadioButton rbtn0709;
@@ -259,7 +325,8 @@ public class CourtResevation extends javax.swing.JFrame
     private javax.swing.JRadioButton rbtn1315;
     private javax.swing.JRadioButton rbtn1517;
     private javax.swing.JRadioButton rbtn1719;
-    private javax.swing.JTextField txtChoose;
+    private javax.swing.JRadioButton rbtn1921;
+    private javax.swing.JRadioButton rbtn2122;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }
