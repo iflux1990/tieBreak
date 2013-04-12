@@ -5,7 +5,6 @@
 package GUI;
 
 import BLL.MemberManager;
-import java.sql.SQLException;
 import javax.swing.UIManager;
 
 /**
@@ -87,7 +86,7 @@ public class TBGUIMenu extends javax.swing.JFrame
 
         lblMemberList.setText("Member List");
 
-        btnShowAll.setText("Show All");
+        btnShowAll.setText("Refresh");
         btnShowAll.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -162,7 +161,7 @@ public class TBGUIMenu extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(lblMemberList)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRemove)

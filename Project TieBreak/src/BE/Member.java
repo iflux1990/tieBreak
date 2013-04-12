@@ -18,6 +18,7 @@ public class Member
     private String email;
     private int licenseNr;
     private boolean isPaid;
+    private String pass;
     /**
      *
      * @param id
@@ -28,6 +29,21 @@ public class Member
      * @param licenseNr
      */
     
+    
+     public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr, boolean isPaid, String pass)
+    {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.yearofbirth = yearofbirth;
+        this.phoneNr = phoneNr;
+        this.email = email;
+        this.licenseNr = licenseNr;
+        this.isPaid = isPaid;
+        this.pass = pass;
+        
+        
+    }
     
     public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr, boolean isPaid)
     {
@@ -187,5 +203,21 @@ public class Member
     {
         this.isPaid = isPaid;
     }   
+
+    /**
+     * @return the pass
+     */
+    public String getPass()
+    {
+        return pass;
+    }
+
+    /**
+     * @param pass the pass to set
+     */
+    public void setPass(String pass)
+    {
+        this.pass = pass;
+    }
     
 }

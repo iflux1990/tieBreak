@@ -4,12 +4,20 @@
  */
 package GUI;
 
+import BLL.MemberManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MikeZJ
  */
 public class CourtResevation extends javax.swing.JFrame
 {
+    
+    private MemberManager mm;
 
     /**
      * Creates new form CourtResevation
@@ -17,6 +25,14 @@ public class CourtResevation extends javax.swing.JFrame
     public CourtResevation()
     {
         initComponents();
+        try
+        {
+            mm = new MemberManager();
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(this, "Impossible to create member", "Error 38", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -254,7 +270,22 @@ public class CourtResevation extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int id = Integer.parseInt(txtID.getText()) ;
+        try
+        {
+            if(txtID.getText().equals(mm.matchIdPass(id).getPass()))            
+            {
+                
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Id and password did not match, please try again", "Error 49", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Could not find the database. - " + ex.getMessage(), "Error 49", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

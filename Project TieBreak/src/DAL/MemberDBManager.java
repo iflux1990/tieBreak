@@ -197,4 +197,29 @@ public class MemberDBManager
             }
             return null;
         }
+     
+     public Member matchIdPass(int ID) throws SQLException
+     {
+         Connection con = dataSource.getConnection();
+            String sql = "SELECT * FROM member WHERE Id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, ID);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String address = rs.getString("address");
+                int phoneNr = rs.getInt("phoneNr");
+                String pass = rs.getString("pass");
+               
+
+                Member m = new Member(id, name, address, phoneNr, pass);
+                return m;
+            }
+            return null;
+         
+     }
 }
