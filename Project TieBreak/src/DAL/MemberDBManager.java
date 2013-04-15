@@ -43,7 +43,7 @@ public class MemberDBManager
 
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "INSERT INTO member VALUES(?,?,?,?, ?,-1,0,0000)";
+            String sql = "INSERT INTO member VALUES(?,?,?,?, ?,-1,0,0000,0)";
 
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -52,6 +52,7 @@ public class MemberDBManager
             ps.setInt(3, m.getYearofbirth());
             ps.setInt(4, m.getPhoneNr());
             ps.setString(5, m.getEmail());
+            ps.setInt(6, m.getAccountType());
 
 
 
@@ -90,8 +91,9 @@ public class MemberDBManager
                 String email = rs.getString("email");
                 int licenseNr = rs.getInt("licenseNr");
                 boolean isPaid = rs.getBoolean("isPaid");
+                int accountType = rs.getInt("accountType");
 
-                Member m = new Member(id, name, address, yearofbirth, phoneNr, email, licenseNr, isPaid);
+                Member m = new Member(id, name, address, yearofbirth, phoneNr, email, licenseNr, isPaid, accountType);
                 members.add(m);
             }
             return members;

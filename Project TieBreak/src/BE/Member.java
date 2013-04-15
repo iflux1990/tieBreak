@@ -19,6 +19,7 @@ public class Member
     private int licenseNr;
     private boolean isPaid;
     private String pass;
+    private int accountType;
     /**
      *
      * @param id
@@ -45,7 +46,7 @@ public class Member
         
     }
     
-    public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr, boolean isPaid)
+    public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr, boolean isPaid, int accountType)
     {
         this.id = id;
         this.name = name;
@@ -55,6 +56,7 @@ public class Member
         this.email = email;
         this.licenseNr = licenseNr;
         this.isPaid = isPaid;
+        this.accountType = accountType;
         
     }
 
@@ -218,6 +220,22 @@ public class Member
     public void setPass(String pass)
     {
         this.pass = pass;
+    }
+
+    /**
+     * @return the accountType
+     */
+    public int getAccountType()
+    {
+        return accountType;
+    }
+
+    /**
+     * @param accountType the accountType to set
+     */
+    public void setAccountType(int accountType)
+    {
+        this.accountType = accountType;
     }
     
 }

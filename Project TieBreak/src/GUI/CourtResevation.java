@@ -275,7 +275,9 @@ public class CourtResevation extends javax.swing.JFrame
         {
             if(txtID.getText().equals(mm.matchIdPass(id).getPass()))            
             {
-                
+//                Date dateFromChooser = jDateChooser1.getDate();
+//                        String dateString
+//                if(jDateChooser1.getDate())
             }
             else
             {
