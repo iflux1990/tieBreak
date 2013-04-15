@@ -71,6 +71,16 @@ public class Member
         this.licenseNr = licenseNr;
     }
     
+    public Member(int id, String name, String address, int phoneNr, String email, int accountType)
+    {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phoneNr = phoneNr;
+        this.email = email;
+        this.accountType = accountType;
+    }
+    
     public Member(int id, String name, String address, int phoneNr, String email)
     {
         this.id = id;

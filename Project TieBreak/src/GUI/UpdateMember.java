@@ -58,6 +58,7 @@ public class UpdateMember extends javax.swing.JFrame
         lblName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
+        chkAdmin = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Member");
@@ -98,6 +99,9 @@ public class UpdateMember extends javax.swing.JFrame
 
         jLabel1.setText("ID to update:");
 
+        chkAdmin.setText("  Administrator: ");
+        chkAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,6 +131,9 @@ public class UpdateMember extends javax.swing.JFrame
                                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(chkAdmin)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +158,9 @@ public class UpdateMember extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chkAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose)
                     .addComponent(btnCancel))
@@ -204,6 +213,15 @@ public class UpdateMember extends javax.swing.JFrame
                     email = txtEmail.getText();
                     
                 }
+                if (!"".equals(txtEmail.getText()) || null == (txtEmail.getText()))
+                {                  
+                    email = txtEmail.getText();
+                    
+                }
+//                if (chkAdmin.setSelected(true) == )
+//                {
+//                    
+//                }
                 
                 Member updateMember = new Member(id, name, address, phone, email);
                 mm.updateMember(updateMember, id);
@@ -286,6 +304,7 @@ public class UpdateMember extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClose;
+    private javax.swing.JCheckBox chkAdmin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblEmail;

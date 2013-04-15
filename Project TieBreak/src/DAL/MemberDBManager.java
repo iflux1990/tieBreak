@@ -158,7 +158,7 @@ public class MemberDBManager
           {
             Connection con = dataSource.getConnection();
 
-            String sql = "UPDATE Member SET name = ?, address = ?, phoneNr = ?, email = ?"
+            String sql = "UPDATE Member SET name = ?, address = ?, phoneNr = ?, email = ?, accountType = ?"
                     + " WHERE ID = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -166,7 +166,9 @@ public class MemberDBManager
              ps.setString(2, update.getAddress());
              ps.setInt(3, update.getPhoneNr());
              ps.setString(4, update.getEmail());
-             ps.setInt(5, update.getId());
+             ps.setInt(5, update.getAccountType());
+             ps.setInt(6, update.getId());
+             
 
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0)
@@ -192,9 +194,10 @@ public class MemberDBManager
                 String address = rs.getString("address");
                 int phoneNr = rs.getInt("phoneNr");
                 String email = rs.getString("email");
+                int accountType = rs.getInt("accountType");
                
 
-                Member m = new Member(id, name, address, phoneNr, email);
+                Member m = new Member(id, name, address, phoneNr, email, accountType);
                 return m;
             }
             return null;
@@ -216,9 +219,10 @@ public class MemberDBManager
                 String address = rs.getString("address");
                 int phoneNr = rs.getInt("phoneNr");
                 String pass = rs.getString("pass");
+                int accountType = rs.getInt("accountType");
                
 
-                Member m = new Member(id, name, address, phoneNr, pass);
+                Member m = new Member(id, name, address, phoneNr, pass, accountType);
                 return m;
             }
             return null;
