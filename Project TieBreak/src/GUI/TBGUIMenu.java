@@ -31,6 +31,7 @@ public class TBGUIMenu extends javax.swing.JFrame
             memberModel = new MemberTableModel(mm.showAll());
             tblShowAll.setModel(memberModel);
             
+            
         }
         catch (Exception ex)
         {
@@ -178,6 +179,7 @@ public class TBGUIMenu extends javax.swing.JFrame
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCreateActionPerformed
     {//GEN-HEADEREND:event_btnCreateActionPerformed
         new AddMember().setVisible(true);
+        
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnShowAllActionPerformed
