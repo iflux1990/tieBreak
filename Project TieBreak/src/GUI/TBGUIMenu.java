@@ -5,6 +5,7 @@
 package GUI;
 
 import BLL.MemberManager;
+import java.sql.SQLException;
 import javax.swing.UIManager;
 
 /**
@@ -20,7 +21,7 @@ public class TBGUIMenu extends javax.swing.JFrame
     /**
      * Creates new form TBGUI
      */
-    public TBGUIMenu()
+    public TBGUIMenu(int id)
     {
         initComponents();
 
@@ -30,6 +31,13 @@ public class TBGUIMenu extends javax.swing.JFrame
             mm.setNewSeason();
             memberModel = new MemberTableModel(mm.showAll());
             tblShowAll.setModel(memberModel);
+            if(mm.getByID(id).getAccountType() != 1)
+            {
+                btnRemove.setEnabled(false);
+                btnUpdateCon.setEnabled(false);
+                btnUpdateMem.setEnabled(false);
+                btnCreate.setEnabled(false);
+            }
             
             
         }
@@ -186,14 +194,14 @@ public class TBGUIMenu extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnShowAllActionPerformed
         
         
-        //        try
-//        {
-//            memberModel.setCollection(mm.showAll());
-//        }
-//        catch (SQLException ex)
-//        {
-//            ex.printStackTrace();
-//        }
+                try
+        {
+            memberModel.setCollection(mm.showAll());
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRemoveActionPerformed
@@ -249,7 +257,7 @@ public class TBGUIMenu extends javax.swing.JFrame
         {
             public void run()
             {
-                new TBGUIMenu().setVisible(true);
+//                new TBGUIMenu().setVisible(true);
             }
         });
     }

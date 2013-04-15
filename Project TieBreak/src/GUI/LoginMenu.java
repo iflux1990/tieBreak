@@ -142,16 +142,15 @@ public class LoginMenu extends javax.swing.JFrame
         {
 
             Member m = mm.matchIdPass(id, pass);
-            if (id == m.getId())
+            if (m != null)
             {
-                if (pass.equals(m.getPass()))
+                if (id == m.getId())
                 {
-                    new TBGUIMenu().setVisible(true);
-                    this.dispose();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this, "Wrong ID or Password, try again!", "Error 123", JOptionPane.ERROR_MESSAGE);
+                    if (pass.equals(m.getPass()))
+                    {
+                        new TBGUIMenu(id).setVisible(true);
+                        this.dispose();
+                    }
                 }
             }
             else
@@ -160,14 +159,13 @@ public class LoginMenu extends javax.swing.JFrame
             }
 
 
+
         }
         catch (SQLException ex)
         {
             Logger.getLogger(LoginMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_btnLogInActionPerformed
-
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtUserActionPerformed
     {//GEN-HEADEREND:event_txtUserActionPerformed
         // TODO add your handling code here:
@@ -187,22 +185,28 @@ public class LoginMenu extends javax.swing.JFrame
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
+
+
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(LoginMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(LoginMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(LoginMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(LoginMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginMenu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -43,7 +43,7 @@ public class MemberDBManager
 
         try (Connection con = dataSource.getConnection())
         {
-            String sql = "INSERT INTO member VALUES(?,?,?,?, ?,-1,0,0000,0)";
+            String sql = "INSERT INTO member VALUES(?,?,?,?, ?,-1,0,?,?)";
 
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -52,7 +52,8 @@ public class MemberDBManager
             ps.setInt(3, m.getYearofbirth());
             ps.setInt(4, m.getPhoneNr());
             ps.setString(5, m.getEmail());
-            ps.setInt(6, m.getAccountType());
+            ps.setString(6, m.getPass());
+            ps.setInt(7, m.getAccountType());
 
 
 

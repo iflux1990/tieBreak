@@ -188,6 +188,7 @@ public class UpdateMember extends javax.swing.JFrame
                 String address = m.getAddress();
                 int phone = m.getPhoneNr();
                 String email = m.getEmail();
+                int accountType = m.getAccountType();
                 
                 
                 if (!"".equals(txtName.getText()) || null == (txtName.getText()))
@@ -218,12 +219,12 @@ public class UpdateMember extends javax.swing.JFrame
                     email = txtEmail.getText();
                     
                 }
-//                if (chkAdmin.setSelected(true) == )
-//                {
-//                    
-//                }
+                if (chkAdmin.isSelected() == true)
+                {
+                    accountType = 1;
+                }
                 
-                Member updateMember = new Member(id, name, address, phone, email);
+                Member updateMember = new Member(id, name, address, phone, email, accountType);
                 mm.updateMember(updateMember, id);
                 memberModel.setCollection(mm.showAll());
                

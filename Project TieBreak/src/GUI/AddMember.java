@@ -6,11 +6,6 @@ package GUI;
 
 import BE.Member;
 import BLL.MemberManager;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -62,6 +57,9 @@ public class AddMember extends javax.swing.JFrame
         txtAddress = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
+        chkAdmin = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Member");
@@ -110,6 +108,11 @@ public class AddMember extends javax.swing.JFrame
             }
         });
 
+        chkAdmin.setText("  Administrator");
+        chkAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+
+        jLabel1.setText("Password: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,14 +131,19 @@ public class AddMember extends javax.swing.JFrame
                             .addComponent(lblAddress)
                             .addComponent(lblYoB)
                             .addComponent(lblName)
-                            .addComponent(lblEmail))
+                            .addComponent(lblEmail)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmail)
                             .addComponent(txtName)
                             .addComponent(txtYoB)
                             .addComponent(txtAddress)
-                            .addComponent(txtPhone))))
+                            .addComponent(txtPhone)
+                            .addComponent(txtPass)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chkAdmin)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -161,7 +169,13 @@ public class AddMember extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose)
                     .addComponent(btnCancel))
@@ -180,18 +194,30 @@ public class AddMember extends javax.swing.JFrame
                 && !"".equals(txtYoB.getText())
                 && !"".equals(txtAddress.getText())
                 && !"".equals(txtPhone.getText())
-                && !"".equals(txtEmail.getText()))
+                && !"".equals(txtEmail.getText())
+                && !"".equals(txtPass.getText()))
         {
             String name = txtName.getText();
             String yobStr = txtYoB.getText();
             String address = txtAddress.getText();
             String phoneStr = txtPhone.getText();
             String email = txtEmail.getText();
+            String pass = txtPass.getText();
+            int accountType;
+            
+            if(chkAdmin.isSelected())
+            {
+                accountType = 1;
+            }
+            else
+            {
+                accountType = 0;
+            }
 
             int yob = Integer.parseInt(yobStr);
             int phone = Integer.parseInt(phoneStr);
 
-            Member addMember = new Member(-1, name, address, yob, phone, email, -1);
+            Member addMember = new Member(-1, name, address, yob, phone, email, -1, false, pass, accountType);
 
             try
             {
@@ -274,6 +300,8 @@ public class AddMember extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClose;
+    private javax.swing.JCheckBox chkAdmin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
@@ -282,6 +310,7 @@ public class AddMember extends javax.swing.JFrame
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtYoB;
     // End of variables declaration//GEN-END:variables
