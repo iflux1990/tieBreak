@@ -218,12 +218,16 @@ public class MemberDBManager
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String address = rs.getString("address");
+                int yearofbirth = rs.getInt("yearofbirth");
                 int phoneNr = rs.getInt("phoneNr");
-                String pass = rs.getString("pass");
+                String email = rs.getString("email");
+                int licenseNr = rs.getInt("licenseNr");
+                boolean isPaid = rs.getBoolean("isPaid");
                 int accountType = rs.getInt("accountType");
+                String pass = rs.getString("pass");
                
 
-                Member m = new Member(id, name, address, phoneNr, pass, accountType);
+                Member m = new Member(id, name, address, yearofbirth, phoneNr, email, licenseNr, isPaid, pass, accountType);
                 return m;
             }
             return null;

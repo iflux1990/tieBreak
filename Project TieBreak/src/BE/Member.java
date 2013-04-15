@@ -31,7 +31,7 @@ public class Member
      */
     
     
-     public Member(int id, String name, String address, int yearofbirth, int phoneNr, String email, int licenseNr, boolean isPaid, String pass)
+     public Member(int id, String name,String address,int yearofbirth,int phoneNr, String email, int licenseNr, boolean isPaid, String pass,int accountType)
     {
         this.id = id;
         this.name = name;
@@ -42,6 +42,7 @@ public class Member
         this.licenseNr = licenseNr;
         this.isPaid = isPaid;
         this.pass = pass;
+        this.accountType = accountType;
         
         
     }

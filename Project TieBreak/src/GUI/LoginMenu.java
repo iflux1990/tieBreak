@@ -136,27 +136,30 @@ public class LoginMenu extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnLogInActionPerformed
         String idStr = txtUser.getText();
         int id = Integer.parseInt(idStr);
-        String pass = pwfPass.getPassword().toString();
+        String pass = new String(pwfPass.getPassword());
 
         try
         {
 
             Member m = mm.matchIdPass(id, pass);
-            
-                if (id == m.getId())
+            if (id == m.getId())
+            {
+                if (pass.equals(m.getPass()))
                 {
-                    if (pass.equals(m.getPass()))
-                    {
-                        new TBGUIMenu().setVisible(true);
-                        this.dispose();
-                    }
+                    new TBGUIMenu().setVisible(true);
+                    this.dispose();
                 }
                 else
                 {
                     JOptionPane.showMessageDialog(this, "Wrong ID or Password, try again!", "Error 123", JOptionPane.ERROR_MESSAGE);
                 }
-            
-          
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Wrong ID or Password, try again!", "Error 123", JOptionPane.ERROR_MESSAGE);
+            }
+
+
         }
         catch (SQLException ex)
         {
