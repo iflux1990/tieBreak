@@ -270,10 +270,11 @@ public class CourtResevation extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        int id = Integer.parseInt(txtID.getText()) ;
+        int id = Integer.parseInt(txtID.getText());
+        String pass = "pass";
         try
         {
-            if(txtID.getText().equals(mm.matchIdPass(id).getPass()))            
+            if(txtID.getText().equals(mm.matchIdPass(id,pass).getPass()))            
             {
 //                Date dateFromChooser = jDateChooser1.getDate();
 //                        String dateString
