@@ -198,12 +198,13 @@ public class MemberDBManager
             return null;
         }
      
-     public Member matchIdPass(int ID) throws SQLException
+     public Member matchIdPass(int ID, String Pass) throws SQLException
      {
          Connection con = dataSource.getConnection();
-            String sql = "SELECT * FROM member WHERE Id = ?";
+            String sql = "SELECT * FROM member WHERE Id = ? AND pass = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, ID);
+            ps.setString(2, Pass);
 
             ResultSet rs = ps.executeQuery();
 

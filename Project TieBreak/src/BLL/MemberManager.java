@@ -62,8 +62,8 @@ public class MemberManager
         return mdb.getByID(ID);
     }
     
-    public Member matchIdPass(int ID) throws SQLException
+    public Member matchIdPass(int ID, String pass) throws SQLException
     {
-        return mdb.matchIdPass(ID);
+        return mdb.matchIdPass(ID, pass);
     }
 }
