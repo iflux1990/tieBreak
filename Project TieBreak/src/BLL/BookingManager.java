@@ -32,5 +32,12 @@ public class BookingManager
     {
         return bdb.getByDate(date);
     }
+
+    public ArrayList<Booking> getByDateAndTime(String date, String time) throws SQLException
+    {
+        return bdb.getByDateAndTime(date, time);
+    }
+
+
     
 }

@@ -17,12 +17,14 @@ public class TBGUIMenu extends javax.swing.JFrame
 
     private MemberManager mm;
     private MemberTableModel memberModel;
+    private int UserId;
 
     /**
      * Creates new form TBGUI
      */
     public TBGUIMenu(int id)
     {
+        UserId = id;
         initComponents();
 
         try
@@ -69,6 +71,7 @@ public class TBGUIMenu extends javax.swing.JFrame
         btnUpdateMem = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblShowAll = new javax.swing.JTable();
+        btnCourtReservation = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -143,6 +146,15 @@ public class TBGUIMenu extends javax.swing.JFrame
         ));
         jScrollPane2.setViewportView(tblShowAll);
 
+        btnCourtReservation.setText("Court Reservation");
+        btnCourtReservation.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCourtReservationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,10 +162,10 @@ public class TBGUIMenu extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMemberList)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnShowAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCourtReservation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -161,7 +173,9 @@ public class TBGUIMenu extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdateMem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemove)))
+                        .addComponent(btnRemove))
+                    .addComponent(lblMemberList)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -177,7 +191,8 @@ public class TBGUIMenu extends javax.swing.JFrame
                     .addComponent(btnUpdateCon)
                     .addComponent(btnCreate)
                     .addComponent(btnShowAll)
-                    .addComponent(btnUpdateMem))
+                    .addComponent(btnUpdateMem)
+                    .addComponent(btnCourtReservation))
                 .addGap(23, 23, 23))
         );
 
@@ -218,6 +233,11 @@ public class TBGUIMenu extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnUpdateMemActionPerformed
          new UpdateMember().setVisible(true);
     }//GEN-LAST:event_btnUpdateMemActionPerformed
+
+    private void btnCourtReservationActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCourtReservationActionPerformed
+    {//GEN-HEADEREND:event_btnCourtReservationActionPerformed
+        new CourtResevation(UserId).setVisible(true);
+    }//GEN-LAST:event_btnCourtReservationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,6 +282,7 @@ public class TBGUIMenu extends javax.swing.JFrame
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCourtReservation;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnShowAll;

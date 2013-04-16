@@ -92,4 +92,31 @@ public class BookingDBManager
         }
         return bookings;
     }
+
+    public ArrayList<Booking> getByDateAndTime(String date, String time) throws SQLException
+    {
+        Connection con = dataSource.getConnection();
+        String sql = "SELECT * FROM booking WHERE date = ? AND timeSlot = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, date);
+        ps.setString(2, time);
+
+        ResultSet rs = ps.executeQuery();
+
+        ArrayList<Booking> bookings = new ArrayList<>();
+
+        while (rs.next())
+        {
+            int id = rs.getInt("id");
+            date = rs.getString("date");
+            String timeSlot = rs.getString("timeSlot");
+            int memberId = rs.getInt("memberId");
+            int court = rs.getInt("courtNr");
+
+
+            Booking b = new Booking(id, date, timeSlot, memberId, court);
+            bookings.add(b);
+        }
+        return bookings;
+    }
 }

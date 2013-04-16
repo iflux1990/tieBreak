@@ -4,10 +4,15 @@
  */
 package GUI;
 
+import BLL.BookingManager;
 import BLL.MemberManager;
+import com.toedter.calendar.JDateChooser;
+import java.util.Date;
 import java.sql.SQLException;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,18 +21,25 @@ import javax.swing.JOptionPane;
  */
 public class CourtResevation extends javax.swing.JFrame
 {
-    
+
     private MemberManager mm;
+    private BookingManager bm;
 
     /**
      * Creates new form CourtResevation
      */
-    public CourtResevation()
+    public CourtResevation(int id)
     {
         initComponents();
+        for (int i = 0; i < 999999999; i++)
+        {
+            setEnabled();
+        }
+
         try
         {
             mm = new MemberManager();
+            bm = new BookingManager();
         }
         catch (Exception ex)
         {
@@ -46,8 +58,6 @@ public class CourtResevation extends javax.swing.JFrame
     {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         chkCourt1 = new javax.swing.JCheckBox();
         chkCourt2 = new javax.swing.JCheckBox();
         chkCourt3 = new javax.swing.JCheckBox();
@@ -65,12 +75,9 @@ public class CourtResevation extends javax.swing.JFrame
         lblDate = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblID.setText("ID of member:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         chkCourt1.setText("Court 1");
 
@@ -151,7 +158,7 @@ public class CourtResevation extends javax.swing.JFrame
                                 .addComponent(rbtn0709)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbtn1517)))
-                        .addGap(0, 41, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -190,10 +197,6 @@ public class CourtResevation extends javax.swing.JFrame
 
         jButton2.setText("Cancel");
 
-        jPasswordField1.setText("jPasswordField1");
-
-        jLabel1.setText("Password: ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,16 +213,8 @@ public class CourtResevation extends javax.swing.JFrame
                                     .addComponent(chkCourt3)
                                     .addComponent(chkCourt2)
                                     .addComponent(chkCourt1)))
-                            .addComponent(lblAvailable)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblID)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPasswordField1)
-                                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lblAvailable))
+                        .addGap(0, 109, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)
@@ -230,15 +225,7 @@ public class CourtResevation extends javax.swing.JFrame
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblAvailable)
@@ -270,25 +257,8 @@ public class CourtResevation extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        int id = Integer.parseInt(txtID.getText());
-        String pass = "pass";
-        try
-        {
-            if(txtID.getText().equals(mm.matchIdPass(id,pass).getPass()))            
-            {
-//                Date dateFromChooser = jDateChooser1.getDate();
-//                        String dateString
-//                if(jDateChooser1.getDate())
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "Id and password did not match, please try again", "Error 49", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        catch (SQLException ex)
-        {
-            JOptionPane.showMessageDialog(this, "Could not find the database. - " + ex.getMessage(), "Error 49", JOptionPane.ERROR_MESSAGE);
-        }
+
+        String date = new JDateChooser().getDateFormatString();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -335,7 +305,7 @@ public class CourtResevation extends javax.swing.JFrame
         {
             public void run()
             {
-                new CourtResevation().setVisible(true);
+//                new CourtResevation().setVisible(true);
             }
         });
     }
@@ -347,12 +317,9 @@ public class CourtResevation extends javax.swing.JFrame
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblAvailable;
     private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblID;
     private javax.swing.JRadioButton rbtn0709;
     private javax.swing.JRadioButton rbtn0911;
     private javax.swing.JRadioButton rbtn1113;
@@ -361,6 +328,74 @@ public class CourtResevation extends javax.swing.JFrame
     private javax.swing.JRadioButton rbtn1719;
     private javax.swing.JRadioButton rbtn1921;
     private javax.swing.JRadioButton rbtn2122;
-    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
+
+    private void setEnabled()
+    {
+
+        Date dateFromDateChooser = new JDateChooser().getDate();
+        String dateString = String.format("%1$td-%1$tm-%1$tY", dateFromDateChooser);
+ 
+        try
+        {
+            if (bm.getByDate(dateString).get(0).getTimeSlot() != null)
+            {
+                rbtn0709.setEnabled(false);
+            }
+            if (bm.getByDate(dateString).get(1).getTimeSlot() != null)
+            {
+                rbtn0911.setEnabled(false);
+            }
+            if (bm.getByDate(dateString).get(2).getTimeSlot() != null)
+            {
+                rbtn1113.setEnabled(false);
+            }
+            if (bm.getByDate(dateString).get(3).getTimeSlot() != null)
+            {
+                rbtn1315.setEnabled(false);
+            }
+            if (bm.getByDate(dateString).get(4).getTimeSlot() != null)
+            {
+                rbtn1517.setEnabled(false);
+            }
+            if (bm.getByDate(dateString).get(5).getTimeSlot() != null)
+            {
+                rbtn1719.setEnabled(false);
+            }
+            if (bm.getByDate(dateString).get(6).getTimeSlot() != null)
+            {
+                rbtn1921.setEnabled(false);
+            }
+            if (bm.getByDate(dateString).get(7).getTimeSlot() != null)
+            {
+                rbtn2122.setEnabled(false);
+            }
+
+            for (Enumeration<AbstractButton> buttons = buttonGroup1.getElements(); buttons.hasMoreElements();)
+            {
+                AbstractButton button = buttons.nextElement();
+
+                if (button.isSelected())
+                {
+                    if (bm.getByDateAndTime(dateString, button.getText()) != null)
+                    {
+                        chkCourt1.setEnabled(false);
+                    }
+                    if (bm.getByDateAndTime(dateString, button.getText()) != null)
+                    {
+                        chkCourt2.setEnabled(false);
+                    }
+                    if (bm.getByDateAndTime(dateString, button.getText()) != null)
+                    {
+                        chkCourt3.setEnabled(false);
+                    }
+//                    button.getText();
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(CourtResevation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
